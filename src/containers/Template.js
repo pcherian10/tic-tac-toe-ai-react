@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import RaisedButton from 'material-ui/RaisedButton'
+import NavDrawer from '../components/NavDrawer'
 
 
 class Template extends Component {
@@ -9,14 +9,7 @@ class Template extends Component {
         return (
         <MuiThemeProvider>
         <div>   
-            <header>
-                <h1> AI! TicTacToe</h1>
-                <RaisedButton 
-                    label={'Test Button'}
-                    primary={true}
-                    onClick={()=>{console.log('Hello I work')}}
-                />
-            </header>
+            <NavDrawer />
             <main>
                 {this.props.children}
             </main>
