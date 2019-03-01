@@ -59,6 +59,13 @@ class TicTacToe extends Component {
     makeAiMove = (gameState) => {
         let otherMark = this.state.otherMark
         let openSquares = []
+        gameState.forEach( (square, index) => {
+            if (!square) {
+                openSquares.push(index)
+            }
+        })
+        let aiMove = openSquares[this.random(0, openSquare.length)]
+        this.move(aiMove, otherMark)
     }
 
     recordGame = () => {
