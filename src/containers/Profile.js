@@ -6,7 +6,7 @@ class Profile extends Component {
     static defaultProps = {
         user: {
             email: 'USER_EMAIL',
-            game: [
+            games: [
                 {
                     winner: true,
                     createdAt: '02/26/2019',
@@ -37,19 +37,15 @@ class Profile extends Component {
                         <Column>
                             {(game.winner) ? 'Won!' : "Didn't win"}
                         </Column>
-
                         <Column>
                             "ROBOT"
                         </Column>
-
                         <Column>
                             "No"
                         </Column>
-
                         <Column>
                             {game.createdAt}
                         </Column>
-
                     </GameRecord>
                 )
             }
