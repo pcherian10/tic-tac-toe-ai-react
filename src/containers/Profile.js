@@ -36,8 +36,7 @@ class Profile extends Component {
                     <GameListHeader>
                         My Games
                     </GameListHeader>
-                </GameList>
-                <ColumnLabels>
+                    <ColumnLabels>
                     <Column>
                         Outcome
                     </Column>
@@ -51,7 +50,7 @@ class Profile extends Component {
                         Date
                     </Column>
                 </ColumnLabels>
-                
+                </GameList>
             </Container>
         )
     }
