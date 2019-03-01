@@ -40,6 +40,8 @@ export const Squares = ({
     unit,
     coordinates,
     gameState,
+    win,
+    gameOver,
     yourTurn,
     ownMark,
     move
@@ -55,7 +57,6 @@ export const Squares = ({
                 if (gameOver || !yourTurn || mark) {
                     makeMove =  () => console.log('nope!')
                 }
-            }
             return (
                 <Text
                     key = {index}
@@ -74,8 +75,7 @@ export const Squares = ({
                     }}
                 />
             )
-        )
-
+        })
 
     return (
         <Layer>
