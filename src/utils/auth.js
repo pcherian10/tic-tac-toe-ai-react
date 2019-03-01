@@ -1,24 +1,23 @@
-import Auth0Lock from 'auth0-Lock'
-
+import Auth0Lock from 'auth0-lock'
 const authDomain = 'paulcherian.auth0.com'
 const clientId = 'ymWLjYkh7wo9NofXIH3aaZ082z2U0NUn'
 
 class AuthService {
-    constructor(){
-        this.lock = new Auth0Lock(clientId, authDomain, {
-            auth: {
-                params: {
-                    scope: 'openid email'
-                },
-            },
-        })
+    constructor() {
+		this.lock = new Auth0Lock(clientId, authDomain, {
+			auth: {
+				params: {
+					scope: 'openid email'
+				},
+			},
+		})
 
-        this.showLock = this.showLock.bind(this)
+		this.showLock = this.showLock.bind(this)
 
-        this.lock.on('authenticated', this.authProcess.bind(this) )
-    }
+		this.lock.on('authenticated', this.authProcess.bind(this))
+	}
 
-    authProcess = (authProcess) => {
+    authProcess = (authResult) => {
         console.log(authResult)
     }
 
@@ -38,13 +37,14 @@ class AuthService {
     isCurrent = () => {
         let expString = localStorage.getItem('exp')
         if(!expString) {
-            locatStorage.removeItem('idToken')
+            localStorage.removeItem('idToken')
             return false;
         }
         let now = new Date()
-        let exp = new Date(parseInt(expString, 10) // 10 is a radix parameter
+        let exp = new Date(parseInt(expString, 10)) // 10 is a radix parameter
+        
         if (exp < now) {
-            this.logout
+            this.logout()
             return false
         } else {
             return true
@@ -67,9 +67,10 @@ class AuthService {
     logout = () => {
         localStorage.removeItem('idToken')   
         localStorage.removeItem('exp')  
-        location.reload();
+         window.location.reload()
     }
-
-
-
 }
+
+const auth = new AuthService()
+
+export default auth;
